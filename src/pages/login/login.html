@@ -8,14 +8,16 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      Ujian Semester Genap 2017/2018
-    </ion-card-header>
-    <ion-card-content>
-      UTS 2017/2018 dimulai pada Senin, 16 Januari 2018.
-    </ion-card-content>
-  </ion-card>
+  <div *ngFor="let item of ini">
+    <ion-card>
+      <ion-card-header>
+        {{item.task}}
+      </ion-card-header>
+      <ion-card-content>
+        {{item.task_description}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 
   <h4>Login</h4>
   <hr>

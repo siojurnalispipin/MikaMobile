@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Http, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  url : string = "http://localhost:8000/api/tasks";
+  ini : string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private http : Http
+  ) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.muatBerita();
+  }
+
+
+  muatBerita(){
+    this.http.get(this.url)
+    .map( res => res.json())
+    .subscribe(ini => {
+      this.ini = ini.data;
+      console.log(ini.data);
+    }, err =>{
+      console.log(err);
+    });
   }
 
 }
