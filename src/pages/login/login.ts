@@ -29,7 +29,7 @@ export class LoginPage {
     .map( res => res.json())
     .subscribe(ini => {
       this.ini = ini.data;
-      console.log(ini.data);
+      //console.log(ini.data);
     }, err =>{
       console.log(err);
     });
